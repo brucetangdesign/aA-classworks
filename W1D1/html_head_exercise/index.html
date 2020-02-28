@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Chicken Sandwich Recipe</title>
+    <meta description="Chicken sandwich recipe">
+    <script src="external_javascript_example.js"></script>
+    <link rel="stylesheet" type="text/css" href="css_reset.css"></link>
 </head>
 <body>
     <header>
@@ -47,9 +50,9 @@
             </ol>
         </section>
     </main>
-    <section>
+    <section id="reviews">
         <br>
-        <form>
+        <form id="review-form">
             <label for="reviewer">REVIEWER NAME</label>
             <br>
             <input type="text" name="name" id="reviewer">
@@ -79,11 +82,12 @@
             </select>
             <br>
             <br>
+            REVIEW
+            <br>
             <label>
-                REVIEW
-                <br>
                 <textarea id="review" rows="10" cols="50"></textarea>
             </label>
+            <button>SUBMIT</button>
         </form>
     </section>
     <footer><p>Recipe by our lord and savior Satan</p></footer>
