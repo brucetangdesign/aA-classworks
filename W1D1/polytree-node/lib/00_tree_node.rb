@@ -36,6 +36,18 @@ class PolyTreeNode
         nil
     end
 
+    def bfs(target_value)
+        queue = []
+        queue << self
+        until queue.empty?
+            search_result = queue.shift
+            return search_result if search_result.value == target_value
+            search_result.children.each { | child | queue << child }
+        end
+
+        nil
+    end
+
     def get_children
         @children.map {|child| child.value}
     end
@@ -49,4 +61,6 @@ n3 = PolyTreeNode.new(3)
 n1.add_child(n2)
 n1.add_child(n3)
 n2.add_child(n2a)
-p n1.dfs("4")
+
+p n1.dfs(2)
+p n1.bfs(2)
