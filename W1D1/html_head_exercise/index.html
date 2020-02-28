@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <img src="app-academy-logo.svg" width="200px"/>
+        <h1>Chicken Sandwich</h1>
+        <nav>
+            <ul>
+                <li><a href="#description">Description</a></li>
+                <li><a href="#ingredients">Ingredients</a></li>
+                <li><a href="#directions">Directions</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <figure>
+            <h2 id="description">Description</h2>
+            <p>
+                This is the most delicious sandwich in existence. Your life will become meaningless after you eat this. You will yearn only for the crisp chicken. The days will grow long. The nights will grow longer. Chicken chicken chicken.
+            </p>
+            <aside>
+                <p>This chicken is not organic</p>
+            </aside>
+            <figure><img src="chk.jpg" alt="chicken sandwich image" /></figure>
+            <figcaption><a href="https://en.wikipedia.org/wiki/Chicken_sandwich" target="_blank">Wikipedia</a></figcaption>
+        </section>
+        <section>
+            <h2 id="ingredients">Ingredients</h2>
+            <ul>
+                <li>Chicken</li>
+                <li>Bun</li>
+                <li>Mayo</li>
+            </ul>
+        </section>
+        <section>
+            <h2 id="directions">Directions</h2>
+            <ol>
+                <li>Bread the chicken</li>
+                <li>Fry</li>
+                <li>Put on sandwich</li>
+            </ol>
+        </section>
+    </main>
+    <section>
+        <br>
+        <form>
+            <label for="reviewer">REVIEWER NAME</label>
+            <br>
+            <input type="text" name="name" id="reviewer">
+            <br>
+            <br>
+            <label for="rating">RATING</label>
+            <br>
+            <label for="1">1</label>
+            <input type="radio" name="rating" value="1">
+            <label for="2">2</label>
+            <input type="radio" name="rating" value="2">
+            <label for="3">3</label>
+            <input type="radio" name="rating" value="3">
+            <label for="4">4</label>
+            <input type="radio" name="rating" value="4">
+            <label for="5">5</label>
+            <input type="radio" name="rating" value="5">
+            <br>
+            <br>
+            <label for="expertise">COOKING EXPERTISE</label><br>
+            <select id="expertise">
+                <option disabled selected>Select Cooking Expertise</option>
+                <option value="sometimes">Sometimes Cook</option>
+                <option value="everyday">Everyday</option>
+                <option value="hobby">Cooking is a Hobby</option>
+                <option value="pro">Professional Chef</option>
+            </select>
+            <br>
+            <br>
+            <label>
+                REVIEW
+                <br>
+                <textarea id="review" rows="10" cols="50"></textarea>
+            </label>
+        </form>
+    </section>
+    <footer><p>Recipe by our lord and savior Satan</p></footer>
+</body>
+</html>
