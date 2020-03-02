@@ -26,7 +26,7 @@ class KnightPathFinder
             end
             end
         end
-        p @considered_positions
+        @considered_positions
     end
 
     def self.valid_moves(position)
@@ -70,8 +70,22 @@ class KnightPathFinder
     end
 
     def find_path(end_position)
-        
+        end_node = @root_node.bfs(end_position)
+
+        return end_node.nil? ? "Path not found" : trace_path_back(end_node)
+    end
+
+    def trace_path_back(end_node)
+        path = []
+
+        while end_node != nil
+            path << end_node.value
+            end_node = end_node.parent
+        end
+
+        path.reverse
     end
 end
 
 kpf = KnightPathFinder.new([0, 0])
+p kpf.find_path([7,6])
