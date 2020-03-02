@@ -68,6 +68,10 @@ class KnightPathFinder
         @considered_positions.concat(new_positions)
         new_positions
     end
+
+    def find_path(end_position)
+        
+    end
 end
 
 kpf = KnightPathFinder.new([0, 0])
