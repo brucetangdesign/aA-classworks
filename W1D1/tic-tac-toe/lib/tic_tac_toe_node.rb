@@ -22,8 +22,14 @@ class TicTacToeNode
     (0...@board.rows.length).each do |row_n|
       (0...@board.rows[row_n].length).each do |col_n|
         if @board.empty?([row_n,col_n])
-          mark = (@next_mover_mark == :x)? :o : :x
-          child_nodes << TicTacToeNode.new(@board, mark, [row_n,col_n])
+          child_mark = (@next_mover_mark == :x)? :o : :x
+          child_board = @board.dup
+          child_board.rows.each_with_index do |row,row_n|
+            row.each_with_index do |col,col_n|
+              child_board.rows[row_n][col_n] = child_mark
+            end
+          end
+          child_nodes << TicTacToeNode.new(child_board, child_mark, [row_n,col_n])
         end
       end
     end
@@ -31,12 +37,12 @@ class TicTacToeNode
     child_nodes
   end
 
-  def losing_node(evaluator)
+  def losing_node?(evaluator)
   end
 
-  def wining_node(evaluator)
+  def wining_node?(evaluator)
   end
 end
 
 t = TicTacToeNode.new(Board.new,:x)
-p t.children
+t.children
