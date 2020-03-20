@@ -10,7 +10,7 @@ class Company
         if title == "Founder" || title.include?("Manager")
             @employees[name] = Manager.new(name,salary,title,boss)
         else
-            @employees[name] = Employee.new(name,salary,title,boss)
+            @employees[name]git status = Employee.new(name,salary,title,boss)
         end
     end
 
