@@ -14,6 +14,10 @@ module Slideable
     private
     @@HORIZONTAL_DIRS = []
     @@DIAGONAL_DIRS = []
+    def move_dirs
+        
+    end
+
     def grow_unblocked_mpves(dx,dy)
 
     end
