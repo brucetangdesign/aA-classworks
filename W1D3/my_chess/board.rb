@@ -1,11 +1,42 @@
 require 'colorize'
-require_relative 'pieces/piece.rb'
+require_relative 'pieces/pawn.rb'
 
 class Board
     def initialize
         @board_size = 8
         @rows = Array.new(@board_size) {Array.new(@board_size, " ")}
         create_starting_grid
+    end
+
+    def [](pos)
+        #raise "Invalid position" if !valid_pos?(pos)
+        @rows[pos[0]][pos[1]]
+    end
+
+    def valid_pos?(pos)
+        pos.all? {|coord| coord.between?(0,7)}
+    end
+
+    def empty?(pos)
+        self[pos] == " "
+    end
+
+    def move_piece(start_pos,end_pos)
+        start_row, start_col = start_pos
+        end_row, end_col = end_pos
+        raise "There is no piece at #{start_pos}" if empty?(start_pos)
+
+        piece = @rows[start_row][start_col]
+        raise "There is already a piece at #{end_pos}" if !empty?(end_pos) && self[end_pos].color == piece.color
+        
+
+        if piece.valid_move?(end_pos)
+            piece.move(end_pos)
+            @rows[end_row][end_col] = @rows[start_row][start_col]
+            @rows[start_row][start_col] = " "
+        else
+            raise "Invalid move"
+        end
     end
 
     def render
@@ -36,11 +67,11 @@ class Board
             (0...@board_size).each do |j|
                 if i == 0 || i == @board_size-1
                     color = (i == 0) ? :white : :yellow
-                    @rows[i][j] = first_row[j].new(color, [i,j])
+                    @rows[i][j] = "*".colorize(color)#first_row[j].new(color, [i,j])
                 elsif
                     i == 1 || i == @board_size-2
                     color = (i == 1) ? :white : :yellow
-                    @rows[i][j] = Piece.new(color, [i,j])
+                    @rows[i][j] = Pawn.new(color, self, [i,j])
                 end
             end
         end
@@ -48,4 +79,10 @@ class Board
 end
 
 b = Board.new
+b.render
+b.move_piece([1,1],[3,1])
+b.render
+b.move_piece([6,0],[4,0])
+b.render
+b.move_piece([3,1],[4,0])
 b.render
