@@ -1,22 +1,24 @@
 require "colorize"
-require_relative "piece.rb"
+require_relative "pieces"
 
 class Board
     def initialize
         @board_size = 8;
-        @rows = Array.new(@board_size) {Array.new}
+        @sentinel = NullPiece.instance
         place_pieces
-        
-        @sentinel = nil
+
+        p @rows
     end
 
     def place_pieces
+        @rows = Array.new(@board_size) {Array.new(@board_size, @sentinel)}
+        first_row = [Rook, Bishop, Knight, Queen, King, Knight, Bishop, Rook]
+
         (0...@board_size).each do |i|
             (0...@board_size).each do |j|
-                if i > 1 && i < @board_size-2
-                    @rows[i] << nil
-                else
-                    @rows[i] << Piece.new
+                if i == 0 || i == @board_size-1
+                    color = (i == 0) ? :white : :black
+                    @rows[i][j] = first_row[j].new(color, self, [i,j])
                 end
             end
         end
@@ -30,8 +32,6 @@ class Board
 
         @rows[end_row][end_col] = @rows[start_row][start_col]
         @rows[start_row][start_col] = nil
-
-        p @rows
     end
 
     def render
@@ -45,4 +45,3 @@ class Board
 end
 
 b = Board.new
-b.move_piece([0,0],[3,1])
