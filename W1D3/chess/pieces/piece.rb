@@ -6,6 +6,7 @@ class Piece
     end
 
     def to_s
+        self.symbol
     end
 
     def empty?

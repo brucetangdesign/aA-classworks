@@ -6,12 +6,10 @@ class NullPiece < Piece
     attr_reader :symbol
 
     def initialize
+        @symbol = " "
+        @color = :none
     end
 
     def moves
-    end
-
-    def symbol
-        '\u2588'.colorize(color)
     end
 end
