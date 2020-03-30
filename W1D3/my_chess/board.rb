@@ -1,5 +1,6 @@
 require 'colorize'
 require_relative 'pieces/pawn.rb'
+require_relative 'pieces/rook.rb'
 
 class Board
     def initialize
@@ -61,13 +62,17 @@ class Board
 
     private
     def create_starting_grid
-        first_row = [Piece,Piece, Piece, Piece, Piece, Piece, Piece, Piece]
+        first_row = [Rook,"*","*","*","*","*","*","*"]
 
         (0...@board_size).each do |i|
             (0...@board_size).each do |j|
                 if i == 0 || i == @board_size-1
                     color = (i == 0) ? :white : :yellow
-                    @rows[i][j] = "*".colorize(color)#first_row[j].new(color, [i,j])
+                    if j == 0
+                        @rows[i][j] = first_row[j].new(color, self, [i,j])
+                    else
+                        @rows[i][j] = "*".colorize(color)#first_row[j].new(color, [i,j])
+                    end
                 elsif
                     i == 1 || i == @board_size-2
                     color = (i == 1) ? :white : :yellow
@@ -81,8 +86,4 @@ end
 b = Board.new
 b.render
 b.move_piece([1,1],[3,1])
-b.render
-b.move_piece([6,0],[4,0])
-b.render
-b.move_piece([3,1],[4,0])
 b.render
