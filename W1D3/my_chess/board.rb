@@ -36,7 +36,7 @@ class Board
             @rows[end_row][end_col] = @rows[start_row][start_col]
             @rows[start_row][start_col] = " "
         else
-            raise "Invalid move"
+            raise "You can't move there"
         end
     end
 
@@ -71,7 +71,7 @@ class Board
                     if j == 0
                         @rows[i][j] = first_row[j].new(color, self, [i,j])
                     else
-                        @rows[i][j] = "*".colorize(color)#first_row[j].new(color, [i,j])
+                        #@rows[i][j] = "*".colorize(color)#first_row[j].new(color, [i,j])
                     end
                 elsif
                     i == 1 || i == @board_size-2
@@ -85,5 +85,5 @@ end
 
 b = Board.new
 b.render
-b.move_piece([1,1],[3,1])
+b.move_piece([0,0],[7,0])
 b.render

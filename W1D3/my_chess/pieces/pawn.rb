@@ -5,7 +5,7 @@ class Pawn < Piece
         '♟'.colorize(@color)
     end
 
-    def valid_move?(pos)
+    def valid_move?(end_pos)
         cur_x, cur_y = @pos
         possible_moves = []
         
@@ -21,7 +21,7 @@ class Pawn < Piece
             end
         end
         
-        possible_moves.include?(pos)
+        possible_moves.include?(end_pos)
     end
 
     private
