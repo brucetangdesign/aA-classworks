@@ -9,13 +9,13 @@ class Pawn < Piece
         cur_x, cur_y = @pos
         possible_moves = []
         
-        move_diffs.each do |coords|
-            new_pos = [cur_x + coords[0], cur_y + coords[1]]
+        move_diffs.each do |dx, dy|
+            new_pos = [cur_x + dx, cur_y + dy]
             possible_moves << new_pos if @board.valid_pos?(new_pos)
         end
         
         allowed_to_jump_moves.each do |coords|
-            new_pos = [cur_x + coords[0], cur_y + coords[1]]    
+            new_pos = [cur_x + dx, cur_y + dy]
             if !@board.empty?(new_pos) && @board.valid_pos?(new_pos)
                 possible_moves << new_pos if @board[new_pos].color != @color
             end
