@@ -76,7 +76,7 @@ class Board
                 elsif
                     i == 1 || i == @board_size-2
                     color = (i == 1) ? :white : :yellow
-                    #@rows[i][j] = Pawn.new(color, self, [i,j])
+                    @rows[i][j] = Pawn.new(color, self, [i,j])
                 end
             end
         end
@@ -84,8 +84,4 @@ class Board
 end
 
 b = Board.new
-b.move_piece([7,3],[1,3])
-b.move_piece([1,3],[1,4])
-b.render
-b.move_piece([0,4],[1,4])
 b.render
