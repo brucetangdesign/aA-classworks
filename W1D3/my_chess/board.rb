@@ -4,6 +4,7 @@ require_relative 'pieces/rook.rb'
 require_relative 'pieces/bishop.rb'
 require_relative 'pieces/queen.rb'
 require_relative 'pieces/king.rb'
+require_relative 'pieces/knight.rb'
 
 class Board
     def initialize
@@ -65,17 +66,13 @@ class Board
 
     private
     def create_starting_grid
-        first_row = [Rook,"*",Bishop,Queen,King,Bishop,"*",Rook]
+        first_row = [Rook,Knight,Bishop,Queen,King,Bishop,Knight,Rook]
 
         (0...@board_size).each do |i|
             (0...@board_size).each do |j|
                 if i == 0 || i == @board_size-1
                     color = (i == 0) ? :white : :yellow
-                    if j == 0 || j == 2 || j== 3|| j == 4 ||  j == 5 || j == 7
-                        @rows[i][j] = first_row[j].new(color, self, [i,j])
-                    else
-                        #@rows[i][j] = "*".colorize(color)#first_row[j].new(color, [i,j])
-                    end
+                    @rows[i][j] = first_row[j].new(color, self, [i,j])
                 elsif
                     i == 1 || i == @board_size-2
                     color = (i == 1) ? :white : :yellow
